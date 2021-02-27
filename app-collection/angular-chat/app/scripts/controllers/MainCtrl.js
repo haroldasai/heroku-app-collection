@@ -82,7 +82,7 @@
             console.log(userobj.username);
             vim.welcome = "Welcome "
             vim.currentUsername = userobj.username;
-            vim.currentRoomTitle = "Select a chat room";
+            vim.currentRoomTitle = "Select your chat room";
             vim.publicRoomArray = Room.publicRooms;
             vim.privateRoomArray = User.privateRooms(vim.currentUserId);
           });

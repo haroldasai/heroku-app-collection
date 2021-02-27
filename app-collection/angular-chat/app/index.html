@@ -25,7 +25,7 @@
           <div class="public-rooms" ng-click="main.setPublicRooms()">{{main.publicRoomsFolder}}</div>
           <ul class="rooms-list" ng-hide="main.hidePublicRooms">
               <li class="room-name" ng-repeat="item in main.publicRoomArray track by $index" ng-click="main.setCurrentRoom(item.name, item.$id, false)">
-                    {{item.name}} <a class="delete-icon" title="You can delete a room only if you are the ower of that room" ng-show="item.founder==main.currentUserId" ng-click="main.deletePublicRoom(item.$id)"><span class="ion-trash-b"></span></a>
+                    {{item.name}} <a class="delete-icon" title="You can delete this room if you are the owner" ng-show="item.founder==main.currentUserId" ng-click="main.deletePublicRoom(item.$id)"><span class="ion-trash-b"></span></a>
               </li>
           </ul>
           <div class="private-rooms" ng-click="main.setPrivateRooms()">{{main.privateRoomsFolder}}</div>
