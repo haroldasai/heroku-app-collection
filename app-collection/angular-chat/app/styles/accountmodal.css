@@ -1,0 +1,21 @@
+.firstname-input, .lastname-input {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-right: 1px;
+  margin-left: 1px;
+  height: 1.8rem;
+  width:  139px;
+  font-size: 0.8rem;
+  padding-left: 0.2rem;
+  border: none;
+}
+
+.backto-signin {
+  color:  #1E90FF;
+  cursor: default;
+  float: right;
+}
+
+.backto-signin:hover {
+  color: 	#00BFFF;
+}

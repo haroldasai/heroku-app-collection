@@ -1,0 +1,15 @@
+<div class="modal-new-room">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Invite other users</h3>
+    </div>
+    <div class="modal-form-box">
+        <form class="modal-form" ng-submit="">
+          <ul class="invite-users">
+            <li ng-repeat="user in proommodal.userArray | orderBy: 'online':true" ng-hide="proommodal.checkProomMember(user)"><input type="checkbox" class="invite-user-checkbox" name="users" value="" ng-click="proommodal.pushUser(user.$id, user.username)">{{user.username}}</li>
+          </ul>
+          <div class="no-user-to-invite">{{proommodal.noUser}}</div>
+          <input type="button" class="modal-button cancel" value="Cancel" ng-click="proommodal.cancel()">
+          <input type="submit" class="modal-button create" value="Invite" ng-click="proommodal.registerUsers()">
+        </form>
+    </div>
+</div>

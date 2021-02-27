@@ -1,0 +1,60 @@
+.email-input, .password-input {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  height: 1.8rem;
+  width:  288px;
+  font-size: 0.8rem;
+  padding-left: 0.2rem;
+  border: none;
+}
+
+.button-signin {
+  height: 2.2rem;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding: 10px 12px 8px 12px ;
+  width: 291px;
+  border: none;
+  background-color: #999999;
+  color: white;
+}
+
+.error-status {
+  color: red;
+}
+
+.signIn-status {
+
+}
+
+.button-signin:hover {
+  background-color: #AAAAAA;
+}
+
+.create-account-bar {
+  float: right;
+}
+
+.create-account {
+  color:  #1E90FF;
+  cursor: default;
+}
+
+.create-account:hover {
+  color: 	#00BFFF;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+  color: #AAAAAA;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #AAAAAA;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color:  #AAAAAA;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color:  #AAAAAA;
+  opacity: 1;
+}

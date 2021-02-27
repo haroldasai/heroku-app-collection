@@ -1,0 +1,14 @@
+<div class="modal-new-room">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Create new room</h3>
+    </div>
+    <div class="modal-form-box">
+        <form class="modal-form" ng-submit="roommodal.addData()">
+            <div class="status-bar">{{roommodal.statusBar}}</div>
+            <input type="text" class="room-input" value="" ng-model="roommodal.inputData"><br>
+            <input type="checkbox" class="private-room-checkbox" ng-checked="roommodal.privateRoom" ng-click="roommodal.privateRoom = !roommodal.privateRoom" name="vehicle" value="Car" checked> Make it private<br>
+            <input type="button" class="modal-button cancel" value="Cancel" ng-click="roommodal.cancel()">
+            <input type="submit" class="modal-button create" value="Create Room">
+        </form>
+    </div>
+</div>

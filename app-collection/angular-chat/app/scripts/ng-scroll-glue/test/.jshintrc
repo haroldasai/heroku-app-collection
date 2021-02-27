@@ -1,0 +1,12 @@
+{
+  "node": true,
+  "mocha": true,
+  "jquery": true,
+  "expr": true,
+  "browser": true,
+
+  "globals": {
+    "inject": true,
+    "expect": true
+  }
+}

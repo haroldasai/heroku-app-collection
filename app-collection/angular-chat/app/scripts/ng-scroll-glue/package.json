@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ng-scroll-glue",
+        "scope": null,
+        "escapedName": "ng-scroll-glue",
+        "name": "ng-scroll-glue",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\Koichiro\\Documents\\Bloc\\projects\\bloc-chat"
+    ]
+  ],
+  "_from": "ng-scroll-glue@latest",
+  "_id": "ng-scroll-glue@2.0.10",
+  "_inCache": true,
+  "_location": "/ng-scroll-glue",
+  "_nodeVersion": "4.2.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ng-scroll-glue-2.0.10.tgz_1462336788848_0.790438650874421"
+  },
+  "_npmUser": {
+    "name": "bogusugob",
+    "email": "bogusugob@gmail.com"
+  },
+  "_npmVersion": "2.14.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ng-scroll-glue",
+    "scope": null,
+    "escapedName": "ng-scroll-glue",
+    "name": "ng-scroll-glue",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-scroll-glue/-/ng-scroll-glue-2.0.10.tgz",
+  "_shasum": "3a0636d7bb181d485eaafaa1572559eeb4e955d4",
+  "_shrinkwrap": null,
+  "_spec": "ng-scroll-glue",
+  "_where": "C:\\Users\\Koichiro\\Documents\\Bloc\\projects\\bloc-chat",
+  "author": {
+    "name": "Santiago G. Marín",
+    "email": "santiago@finaldevstudio.com"
+  },
+  "bugs": {
+    "url": "https://github.com/FinalDevStudio/ng-scroll-glue/issues"
+  },
+  "dependencies": {},
+  "description": "An AngularJS directive that automatically scrolls to the bottom of an element on changes in its scope.",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "karma": "^0.13.3",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0",
+    "karma-requirejs": "^0.2.2",
+    "mocha": "^2.2.5",
+    "requirejs": "^2.1.20"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "dist": {
+    "shasum": "3a0636d7bb181d485eaafaa1572559eeb4e955d4",
+    "tarball": "https://registry.npmjs.org/ng-scroll-glue/-/ng-scroll-glue-2.0.10.tgz"
+  },
+  "gitHead": "57ddd297569aa38ddd703e0137b2acc6313bdc89",
+  "homepage": "https://github.com/FinalDevStudio/ng-scroll-glue#readme",
+  "license": "MIT",
+  "main": "gulpfile.js",
+  "maintainers": [
+    {
+      "name": "bogusugob",
+      "email": "bogusugob@gmail.com"
+    }
+  ],
+  "name": "ng-scroll-glue",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FinalDevStudio/ng-scroll-glue.git"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "version": "2.0.10"
+}

@@ -1,0 +1,21 @@
+<div class="modal-user-bg">
+  <div class="modal-new-user">
+      <div class="modal-header">
+          <h3 class="modal-title" >Create an account</h3>
+      </div>
+      <div class="modal-form-box">
+          <form class="modal-form" ng-submit="accountmodal.createAccount()">
+              <input type="text" class="firstname-input" value="" placeholder="First name" ng-model="accountmodal.firstname">
+              <input type="text" class="lastname-input" value="" placeholder="Last name" ng-model="accountmodal.lastname"><br>
+              <input type="text" class="email-input" value="" placeholder="E-mail" ng-model="accountmodal.email"><br>
+              <input type="password" class="password-input" value="" placeholder="Password" ng-model="accountmodal.password"><br>
+              <input type="password" class="password-input" value="" placeholder="Confirm password" ng-model="accountmodal.passwordconfirm"><br>
+              <input type="submit" class="button-signin" value="Create account">
+          </form>
+          <div class="error-status">{{accountmodal.errorStatus}}</div>
+          <div class="account-creation-status">{{accountmodal.status}}</div>
+          <span class="backto-signin" ng-click="accountmodal.openSignInModal()">Sign in&nbsp;&nbsp;</span>
+      </div>
+
+  </div>
+</div>

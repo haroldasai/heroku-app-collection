@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="blocChat">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>My Chat</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="styles/frame.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/modalbase.css">
+    <link rel="stylesheet" href="styles/proommodal.css">
+    <link rel="stylesheet" href="styles/signinmodal.css">
+    <link rel="stylesheet" href="styles/accountmodal.css">
+</head>
+<body>
+
+  <div class="wrap" ng-controller="MainCtrl as main" ng-click="main.resetTimer()">
+      <div class="nav-bar">
+          <div class="hero-title">My Chat</div>
+
+          <div class="loggedin-user">{{main.welcome}}{{main.currentUsername}}</div>
+          <div class="sign-out" ng-click="main.signOut()">sign out</div>
+          <button class="new-room-button" type="button" ng-click="main.openNewRoomModal()">New room</button>
+          <div class="public-rooms" ng-click="main.setPublicRooms()">{{main.publicRoomsFolder}}</div>
+          <ul class="rooms-list" ng-hide="main.hidePublicRooms">
+              <li class="room-name" ng-repeat="item in main.publicRoomArray track by $index" ng-click="main.setCurrentRoom(item.name, item.$id, false)">
+                    {{item.name}} <a class="delete-icon" title="You can delete a room only if you are the ower of that room" ng-show="item.founder==main.currentUserId" ng-click="main.deletePublicRoom(item.$id)"><span class="ion-trash-b"></span></a>
+              </li>
+          </ul>
+          <div class="private-rooms" ng-click="main.setPrivateRooms()">{{main.privateRoomsFolder}}</div>
+          <ul class="rooms-list" ng-hide="main.hidePrivateRooms">
+              <li class="room-name" ng-repeat="item in main.privateRoomArray track by $index" ng-click="main.setCurrentRoom(item.roomname, item.$id, true)">
+                    <span class=room-name-box>{{item.roomname}}</span> <a class="delete-icon" title="You can delete a room only if you are the ower of that room" ng-show="main.getRoomFounder(item.$id)==main.currentUserId"  ng-click="main.deletePrivateRoom(item.$id)"><span class="ion-trash-b"></span></a><input class="invite-button" type="button" name="" value="Invite" ng-click="main.openPrivateRoomModal(item.$id, item.roomname)">
+              </li>
+          </ul>
+      </div>
+
+      <div class="room-view" >
+        <div class="room-title">{{main.currentRoomTitle}}</div>
+        <ul scroll-glue class="messages-list">
+            <li class="message" ng-repeat="message in main.messageArray track by $index">
+                <div class="message-username" ng-hide="message.userid==main.currentUserId">{{message.username}}</div>
+                <div class="message-list-content" ng-style="main.messageStyle(message.userid)" ng-hide="message.username=='' && message.userid==main.currentUserId">
+                {{message.content}}<div class="message-time">{{message.sentAt}}</div></div>
+            </li>
+        </ul>
+        <form class="message-form" ng-submit="main.sendMessage()">
+            <input type="text" class="message-input" placeholder="Write your message here..." ng-model="main.message" ng-change="main.typingPopup()">
+            <input type="submit" class="button-sendmessage" value="Send">
+        </form>
+      </div>
+
+      <div class="user-view">
+        <div class="user-view-title">Users in&nbsp;{{main.currentPrivateRoom}}</div>
+        <ul class="user-list">
+            <li class="user-name" ng-repeat="user in main.userArray | orderBy: 'online':true" ng-show="main.checkProomMember(user)">
+                <span class="user-list">{{user.username}}&nbsp;</span><span ng-show="user.$id==main.currentUserId">(you)</span>
+                <a class="online-icon" ng-show="user.online"><span class="ion-checkmark-circled" title="online"></span></a>
+                <a class="offline-icon" ng-show="!user.online"><span class="ion-close-circled" title="offline"></span></a>
+            </li>
+        </ul>
+        <div class="user-view-title">All users</div>
+        <ul class="user-list">
+            <li class="user-name" ng-repeat="user in main.userArray | orderBy: 'online':true">
+                <span class="user-list">{{user.username}}&nbsp;</span><span ng-show="user.$id==main.currentUserId">(you)</span>
+                <a class="online-icon" ng-show="user.online"><span class="ion-checkmark-circled" title="online"></span></a>
+                <a class="offline-icon" ng-show="!user.online"><span class="ion-close-circled" title="offline"></span></a>
+            </li>
+        </ul>
+      </div>
+  </div>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <!-- ui-router-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+
+    <!-- ui-bootstrap-tpls-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+
+    <!-- Cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
+
+    <!--Scroll Glue-->
+    <script  src="scripts/ng-scroll-glue/dist/ng-scroll-glue.min.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAE7i4GM0Nxp36zJ5aywC2rCnO9ivfo4-4",
+        authDomain: "bloc-chat-a324a.firebaseapp.com",
+        databaseURL: "https://bloc-chat-a324a.firebaseio.com",
+        projectId: "bloc-chat-a324a",
+        storageBucket: "bloc-chat-a324a.appspot.com",
+        messagingSenderId: "62128755831"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/Auth.js"></script>
+    <script src="scripts/services/Room.js"></script>
+    <script src="scripts/services/Message.js"></script>
+    <script src="scripts/services/User.js"></script>
+    <script src="scripts/controllers/CookieCtrl.js"></script>
+    <script src="scripts/controllers/MainCtrl.js"></script>
+    <script src="scripts/controllers/RoomModalCtrl.js"></script>
+    <script src="scripts/controllers/PrivateRoomModalCtrl.js"></script>
+    <script src="scripts/controllers/SignInModalCtrl.js"></script>
+    <script src="scripts/controllers/AccountModalCtrl.js"></script>
+</body>
+</html>
