@@ -8,19 +8,19 @@
          
          $stateProvider
              .state('landing', {
-                 url: '/',
+                 url: '/angular-records/',
                  controller: 'LandingCtrl as landing',
-                 templateUrl: '/templates/landing.html'
+                 templateUrl: '/angular-records/templates/landing.html'
              })
              .state('album', {
-                 url: '/album',
+                 url: '/angular-records/album',
                  controller: 'AlbumCtrl as album',
-                 templateUrl: '/templates/album.html'
+                 templateUrl: '/angular-records/templates/album.html'
              })
              .state('collection', {
-                 url: '/collection',
+                 url: '/angular-records/collection',
                  controller: 'CollectionCtrl as collection',
-                 templateUrl: '/templates/collection.html'
+                 templateUrl: '/angular-records/templates/collection.html'
              });
              
      }
