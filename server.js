@@ -36,10 +36,49 @@ var Hapi = require('hapi'),
             handler: {
                 file: path.join(__dirname, '/app-collection/angular-chat/app/index.html')
             }
+        },
+
+        angularRecordsCss: {
+            method: 'GET',
+            path: '/angular-records/styles/{path*}',
+            handler: createDirectoryRoute('angular-records/app/styles')
+        },
+        angularRecordsJs: {
+            method: 'GET',
+            path: '/angular-records/scripts/{path*}',
+            handler: createDirectoryRoute('angular-records/app/scripts')
+        },
+        angularRecordsAssets: {
+            method: 'GET',
+            path: '/angular-records/assets/{path*}',
+            handler: createDirectoryRoute('angular-records/app/assets')
+        },
+        angularRecordsTemplates: {
+            method: 'GET',
+            path: '/angular-records/templates/{path*}',
+            handler: createDirectoryRoute('angular-records/app/templates')
+        },
+        //spa: {
+        //    method: 'GET',
+        //    path: '/{path*}',
+        //    handler: {
+        //        file: path.join(__dirname, '/app/index.html')
+        //    }
+        //},
+        angularRecordsBase: {
+            method: 'GET',
+            path: '/angular-records/{path*}',
+            handler: {
+                file: path.join(__dirname, '/app-collection/angular-records/app/index.html')
+            }
         }
+
+
     };
 
-server.route([ routes.angularChatCss, routes.angularChatJs, routes.angularChatAssets, routes.angularChatTemplates, routes.angularChatBase ]);
+server.route([ routes.angularChatCss, routes.angularChatJs, routes.angularChatAssets, routes.angularChatTemplates, routes.angularChatBase,
+               routes.angularRecordsCss, routes.angularRecordsJs, routes.angularRecordsAssets, routes.angularRecordsTemplates, routes.angularRecordsBase
+]);
 
 server.start( onServerStarted );
 
